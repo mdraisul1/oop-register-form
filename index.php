@@ -18,7 +18,22 @@
             <div class="container-fluid">
                 <a href="#">Logo</a>
             </div>
-           
+            <div class="container-fluid"></div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="profile.php" class="nav-link active">Profile</a></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="logout.php" class="nav-link">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login.php" class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="register.php" class="nav-link">Register</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
         <!-- body content -->
