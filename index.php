@@ -1,57 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<?php
+    include 'inc/header.php';
+?>
 
-    <!-- bootstrap css cdn link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<!-- body content -->
+<div class="container mt-4">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John</td>
+                <td>John123</td>
+                <td>oXw0T@example.com</td>
+                <td>
+                    <button class="btn btn-warning btn-sm">Update</button>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
-    <!-- bootstrap js cdn link -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- body content end -->
 
-</head>
-<body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a href="#">Logo</a>
-            </div>
-            <div class="container-fluid"></div>
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="profile.php" class="nav-link active">Profile</a></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="logout.php" class="nav-link">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="register.php" class="nav-link">Register</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- body content -->
-
-
-        <!-- Remove the container if you want to extend the Footer to full width. -->
-        <div class="container my-5">
-            <footer class="text-center text-lg-start" style="background-color: #db6930;">
-                <!-- Copyright -->
-                <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                    © 2024 Copyright:
-                    <a class="text-white" href="#">Login Register System</a>
-                </div>
-                <!-- Copyright -->
-            </footer>   
-        </div>
-        <!-- End of .container -->
-
-    </div>
-</body>
-</html>
+<?php 
+    include 'inc/footer.php';
+?>
