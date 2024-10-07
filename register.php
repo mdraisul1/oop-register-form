@@ -30,7 +30,9 @@
                         </div>
                     </form>
                 </div>
-
+                <div class="card-footer text-center py-3">
+                    <small class="text-muted">Already have an account? <a href="#" class="text-primary">Login</a></small>
+                </div>
             </div>
         </div>
     </div>
