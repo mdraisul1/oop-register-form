@@ -21,7 +21,9 @@
                     </div>
                 </form>
             </div>
-            
+            <div class="card-footer text-center py-3">
+                <small class="text-muted">Don't have an account? <a href="#" class="text-primary">Sign up</a></small>
+            </div>
         </div>
     </div>
 </div>
