@@ -1,4 +1,18 @@
-<?php include 'inc/header.php'; ?>
+<?php 
+//include header file and classes
+include 'inc/header.php'; 
+include_once 'lib/Database.php';
+include_once 'lib/User.php';
+//create a database object
+$db = new User();
+
+// check if submit button is clicked
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
+    // call userLogin function
+    $userLogin = $db->userLogin($_POST);
+}
+
+?>
 <!-- login form design start  -->
 <div class="d-flex justify-content-center align-items-center vh-80 bg-light">
     <div class="col-md-4">
@@ -7,6 +21,11 @@
                 <h3 class="mb-0">Login</h3>
             </div>
             <div class="card-body p-4">
+                <?php 
+                    if(isset($userLogin)){
+                        echo $userLogin;
+                    }
+                ?>
                 <form action="login.php" method="POST">
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>

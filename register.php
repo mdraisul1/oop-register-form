@@ -5,6 +5,8 @@ $db = new User();
 
 // check if submit button is clicked
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
+    // var_dump($_POST);
+    // call userRegister function
     $userRegister = $db->userRegister($_POST);
 }
 

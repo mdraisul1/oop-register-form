@@ -3,10 +3,23 @@
     include_once 'lib/User.php';
 
     $db = new User();
+
+    $loginmsg = Session::get('loginmsg');
+    if(isset($loginmsg)){
+        echo $loginmsg;
+    }
 ?>
 
 <!-- body content -->
 <div class="container mt-4">
+    <h1>User List <span class="float-end">Welcome!
+        <?php 
+            $username = Session::get('username');
+            if(isset($username)){
+                echo $username;
+            }
+        ?>
+    </span></h1>
     <table class="table table-striped table-hover table-bordered">
         <thead class="thead-dark">
             <tr>
