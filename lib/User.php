@@ -93,15 +93,16 @@ class User{
             return $msg;
         }
 
-        //checking for duplicate email
-        // $sql = "SELECT * FROM user_lr WHERE email = :email";
-        // $result = $this->db->pdo->prepare($sql);
-        // $result->bindValue(':email', $email);
-        // $result->execute();
-        // if($result->rowCount() > 0){
-        //     $msg = "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Email already exists</div>";
-        //     return $msg;
-        // }
+        // Check if email exists in the database
+        $sql = "SELECT * FROM user_lr WHERE email = :email";
+        $result = $this->db->pdo->prepare($sql);
+        $result->bindValue(':email', $email);
+        $result->execute();
+
+        if ($result->rowCount() == 0) {
+            $msg = "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Email not found</div>";
+            return $msg;
+        }
 
 
         $userData = $this->getLoginUser($email, $password);
