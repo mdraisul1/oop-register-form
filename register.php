@@ -1,4 +1,14 @@
-<?php include 'inc/header.php'; ?>
+<?php 
+include 'inc/header.php';
+include_once 'lib/User.php';
+$db = new User();
+
+// check if submit button is clicked
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
+    $userRegister = $db->userRegister($_POST);
+}
+
+?>
 <!-- register form design start -->
 <div>
     <div class="d-flex justify-content-center align-items-center vh-80 bg-light">
@@ -7,6 +17,7 @@
                 <div class="card-header bg-primary text-white text-center py-4">
                     <h3 class="mb-0">Register</h3>
                 </div>
+                
                 <div class="card-body p-4">
                     <form action="register.php" method="POST">
                         <div class="form-group mb-3">

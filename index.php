@@ -1,5 +1,8 @@
 <?php
     include 'inc/header.php';
+    include_once 'lib/User.php';
+
+    $db = new User();
 ?>
 
 <!-- body content -->
