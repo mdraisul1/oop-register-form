@@ -18,8 +18,20 @@ class User{
 
         //validate checking for empty fields
         if(empty($name) || empty($username) || empty($email) || empty($password)){
-            echo "<div class='alert alert-danger alert-dismissible fade show w-50 mx-auto'>Field must not be empty</div>";
+           $msg = "<div class='alert alert-danger alert-dismissible fade show w-50 mx-auto'>Field must not be empty</div>";
+           return $msg;
         }
+
+        //checking form username validation
+        if(strlen($username) < 4){
+            $msg = "<div class='alert alert-danger alert-dismissible fade show w-50 mx-auto'>Username must be at least 4 characters</div>";
+            return $msg;
+        }elseif('!@#$%^&*()_+' == substr($username, 0, 1)){
+            $msg = "<div class='alert alert-danger alert-dismissible fade show w-50 mx-auto'>Username must not start with special character</div>";
+            return $msg;
+        }
+
+        
     }
 }
 
