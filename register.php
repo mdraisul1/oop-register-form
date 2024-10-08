@@ -19,6 +19,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
                 </div>
                 
                 <div class="card-body p-4">
+
+                    <?php 
+                        if(isset($userRegister)){
+                            echo $userRegister;
+                        }
+                    ?>
                     <form action="register.php" method="POST">
                         <div class="form-group mb-3">
                             <label for="name" class="form-label">Name</label>
