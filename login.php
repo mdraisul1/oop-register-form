@@ -4,6 +4,7 @@ include 'inc/header.php';
 include_once 'lib/Database.php';
 include_once 'lib/User.php';
 //create a database object
+Session::checkLogin();
 $db = new User();
 
 // check if submit button is clicked

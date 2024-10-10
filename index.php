@@ -1,6 +1,7 @@
 <?php
     include 'inc/header.php';
     include_once 'lib/User.php';
+    Session::checkSession();
 
     $db = new User();
 
