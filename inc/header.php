@@ -30,18 +30,28 @@
             </div>
             <div class="container-fluid"></div>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="profile.php" class="nav-link active">Profile</a></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="?action=logout" class="nav-link">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.php" class="nav-link">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="register.php" class="nav-link">Register</a>
-                    </li>
+                    
+                    <?php 
+                        $id = Session::get('id');
+                        $userLogin = Session::get('login');
+                        if($userLogin == true){
+                            echo '
+                            <li class="nav-item">
+                                <a href="profile.php?id='.$id.'" class="nav-link">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="?action=logout" class="nav-link">Logout</a>
+                            </li>';
+                        }else{
+                            echo '
+                            <li class="nav-item">
+                                <a href="login.php" class="nav-link">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="register.php" class="nav-link">Register</a>
+                            </li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </nav>
