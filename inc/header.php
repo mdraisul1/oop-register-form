@@ -1,6 +1,11 @@
 <?php
     include_once 'lib/Session.php';
     Session::init();
+
+    // check if logout button is clicked
+    if(isset($_GET['action']) && $_GET['action'] == 'logout'){
+        Session::destroy();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +34,7 @@
                         <a href="profile.php" class="nav-link active">Profile</a></a>
                     </li>
                     <li class="nav-item">
-                        <a href="logout.php" class="nav-link">Logout</a>
+                        <a href="?action=logout" class="nav-link">Logout</a>
                     </li>
                     <li class="nav-item">
                         <a href="login.php" class="nav-link">Login</a>
