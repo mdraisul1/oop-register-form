@@ -36,6 +36,9 @@
                         $userLogin = Session::get('login');
                         if($userLogin == true){
                             echo '
+                            <li>
+                                <a href="index.php" class="nav-link">Home</a>
+                            </li>
                             <li class="nav-item">
                                 <a href="profile.php?id='.$id.'" class="nav-link">Profile</a>
                             </li>

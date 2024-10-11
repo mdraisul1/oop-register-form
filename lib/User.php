@@ -131,5 +131,77 @@ class User{
         return $result;
     }
 
+    // Fetch a specific user from the database
+    public function getUserById($userId){
+        $sql = "SELECT * FROM user_lr WHERE id = :id";
+        $query = $this->db->pdo->prepare($sql);
+        $query->bindValue(':id', $userId);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC); // Fetch as associative array
+        return $result;
+    }
+
+    // Update user data in the database
+    public function userUpdate($data, $userId) {
+        // Sanitize input data
+        $name = htmlspecialchars($data['name'], ENT_QUOTES);
+        $username = htmlspecialchars($data['username'], ENT_QUOTES);
+        $email = filter_var($data['email'], FILTER_VALIDATE_EMAIL);
+
+        // Validate input data
+        if(empty($name) || empty($username) || empty($email)) {
+            $msg = "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Field must not be empty</div>";
+            return $msg;
+        }
+    
+        // Check if email is valid
+        if (!$email) {
+            $msg = "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Invalid email format</div>";
+            return $msg;
+        }
+    
+        // SQL query
+        $sql = "UPDATE user_lr SET name = :name, username = :username, email = :email WHERE id = :id";
+        $query = $this->db->pdo->prepare($sql);
+    
+        // Binding values securely
+        $query->bindValue(':name', $name);
+        $query->bindValue(':username', $username);
+        $query->bindValue(':email', $email);
+        $query->bindValue(':id', $userId, PDO::PARAM_INT);
+    
+        try {
+            $result = $query->execute();
+            if ($result) {
+                return "<div class='alert alert-success alert-dismissible fade show mx-auto'>User updated successfully</div>";
+            } else {
+                return "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Failed to update user</div>";
+            }
+        } catch (PDOException $e) {
+            // Log error message for debugging purposes
+            error_log($e->getMessage());
+            return "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Something went wrong. Please try again later.</div>";
+        }
+    }
+    
+    // Delete user from the database
+    public function userDelete($userId) {
+        $sql = "DELETE FROM user_lr WHERE id = :id";
+        $query = $this->db->pdo->prepare($sql);
+        $query->bindValue(':id', $userId, PDO::PARAM_INT);
+        try {
+            $result = $query->execute();
+            if ($result) {
+                return "<div class='alert alert-success alert-dismissible fade show mx-auto'>User deleted successfully</div>";
+            } else {
+                return "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Failed to delete user</div>";
+            }
+        } catch (PDOException $e) {
+            // Log error message for debugging purposes
+            error_log($e->getMessage());
+            return "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Something went wrong. Please try again later.</div>";
+        }
+    }
+
 }
 

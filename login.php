@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
                 </form>
             </div>
             <div class="card-footer text-center py-3">
-                <small class="text-muted">Don't have an account? <a href="#" class="text-primary">Sign up</a></small>
+                <small class="text-muted">Don't have an account? <a href="register.php" class="text-primary">Sign up</a></small>
             </div>
         </div>
     </div>

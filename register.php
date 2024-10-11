@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
                     </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                    <small class="text-muted">Already have an account? <a href="#" class="text-primary">Login</a></small>
+                    <small class="text-muted">Already have an account? <a href="login.php" class="text-primary">Login</a></small>
                 </div>
             </div>
         </div>

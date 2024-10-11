@@ -6,6 +6,25 @@
     $loginmsg = Session::get('loginmsg');
     if(isset($loginmsg)){
         echo $loginmsg;
+        Session::set('loginmsg', null);
+    }
+
+    //delete user
+    if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+        $id = $_GET['id'];
+        $loggedInUserId = Session::get('id');  // Get the logged-in user's ID from the session
+
+        // Ensure that the logged-in user can only delete their own account
+        if ($id == $loggedInUserId) {
+            $db = new User();
+            $deleteUser = $db->userDelete($id);
+            if (isset($deleteUser)) {
+                echo $deleteUser;
+            }
+        } else {
+            // If the user tries to delete someone else's account, show an error message
+            echo "<div class='alert alert-danger alert-dismissible fade show mx-auto'>You are not authorized to delete this account</div>";
+        }
     }
 ?>
 
@@ -33,19 +52,16 @@
             <?php
                 $db = new User();
                 $userData = $db->getUserData();
-                // echo "<pre>";
-                // var_dump($userData);
-                // echo "</pre>";
                 if($userData){
                     foreach($userData as $dataU){
                         echo "<tr>
-                            <td>$dataU[id]</td>
-                            <td>$dataU[name]</td>
-                            <td>$dataU[username]</td>
-                            <td>$dataU[email]</td>
+                            <td>{$dataU['id']}</td>
+                            <td>{$dataU['name']}</td>
+                            <td>{$dataU['username']}</td>
+                            <td>{$dataU['email']}</td>
                             <td>
-                                <a href='profile.php?id=$dataU[id]' class='btn btn-primary'>View</a>
-                                <a href='delete.php?id=$dataU[id]' class='btn btn-danger'>Delete</a>
+                                <a href='profile.php?id={$dataU['id']}' class='btn btn-primary'>View</a>
+                                <a href='?action=delete&id={$dataU['id']}' class='btn btn-danger'>Delete</a>
                             </td>
                         </tr>";
                     }
