@@ -120,6 +120,16 @@ class User{
             $msg = "<div class='alert alert-danger alert-dismissible fade show mx-auto'>Invalid email or password</div>";
             return $msg;
         }
-    }  
+    }
+
+    // Fetch all users from the database
+    public function getUserData(){
+        $sql = "SELECT * FROM user_lr";
+        $query = $this->db->pdo->prepare($sql);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC); // Fetch as associative array
+        return $result;
+    }
+
 }
 

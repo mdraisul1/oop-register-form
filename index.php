@@ -3,8 +3,6 @@
     include_once 'lib/User.php';
     Session::checkSession();
 
-    $db = new User();
-
     $loginmsg = Session::get('loginmsg');
     if(isset($loginmsg)){
         echo $loginmsg;
@@ -32,16 +30,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>John</td>
-                <td>John123</td>
-                <td>oXw0T@example.com</td>
-                <td>
-                    <button class="btn btn-warning btn-sm">Update</button>
-                    <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-            </tr>
+            <?php
+                $db = new User();
+                $userData = $db->getUserData();
+                // echo "<pre>";
+                // var_dump($userData);
+                // echo "</pre>";
+                if($userData){
+                    foreach($userData as $dataU){
+                        echo "<tr>
+                            <td>$dataU[id]</td>
+                            <td>$dataU[name]</td>
+                            <td>$dataU[username]</td>
+                            <td>$dataU[email]</td>
+                            <td>
+                                <a href='profile.php?id=$dataU[id]' class='btn btn-primary'>View</a>
+                                <a href='delete.php?id=$dataU[id]' class='btn btn-danger'>Delete</a>
+                            </td>
+                        </tr>";
+                    }
+                }
+            ?>
         </tbody>
     </table>
 </div>
