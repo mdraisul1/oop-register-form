@@ -1,0 +1,23 @@
+{
+    "name": "raisul/notes",
+    "description": "This is a note taking application using raw php oop.",
+    "type": "project",
+    "require": {
+        "nesbot/carbon": "^3.8"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            
+        ]
+    },
+    "authors": [
+        {
+            "name": "Raisul Islam",
+            "email": "mdraju3248@gmail.com"
+        }
+    ]
+}
