@@ -1,5 +1,5 @@
 <?php
-    include_once 'lib/Session.php';
+    use App\Services\Session;
     Session::init();
 
     // check if logout button is clicked

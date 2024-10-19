@@ -1,6 +1,9 @@
 <?php 
-include_once 'lib/Session.php';
-include_once 'lib/Database.php';
+namespace App\Services;
+
+use PDO;
+use PDOException;
+
 class User{
 
     private $db;
@@ -78,8 +81,10 @@ class User{
     }
     //user login
     public function userLogin($data){
+        $auth = new Auth;
         $email = $data['email'];
-        $password = md5($data['password']);
+        $password = $data['password'];
+        $auth->login($email, $password);
 
         //validate checking for empty fields
         if(empty($email) || empty($password)){

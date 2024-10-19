@@ -1,8 +1,10 @@
 <?php 
 //include header file and classes
-include 'inc/header.php'; 
-include_once 'lib/Database.php';
-include_once 'lib/User.php';
+use App\Services\Session;
+use App\Services\User;
+// include "inc/header.php";
+
+
 //create a database object
 Session::checkLogin();
 $db = new User();

@@ -1,5 +1,10 @@
 <?php 
 
+namespace App\Services;
+
+use PDO;
+use PDOException;
+
 class Database{
     // DB connection parameters
     private $host = "localhost";

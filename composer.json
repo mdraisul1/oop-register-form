@@ -11,7 +11,7 @@
             "App\\": "app/"
         },
         "files": [
-            
+            "app/Helpers/function.php"
         ]
     },
     "authors": [

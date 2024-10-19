@@ -1,5 +1,8 @@
 <?php 
 
+namespace App\Services;
+
+
 class Session{
     
     public static function init(){
